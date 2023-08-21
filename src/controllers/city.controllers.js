@@ -23,7 +23,7 @@ const remove = catchError(async (req, res) => {
 const update = catchError(async (req, res) => {
     const { id } = req.params;
     const { city, url, country, description } = req.body;
-    const cities = await City.findByIdAndUpdate(id, { city, url, country, description }, {new:true},)
+    const cities = await City.findByIdAndUpdate(id, { city, url, country, description }, { new: true },)
     return res.json(cities);
 })
 

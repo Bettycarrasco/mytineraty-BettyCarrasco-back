@@ -8,7 +8,7 @@ const errorHandler = (error, _req, res, _next) => {
 
         return res.status(400).send(errors);
     }
-		console.log(error);
+    console.log(error);
     return res.status(500).json({
         message: error.message,
         error: error

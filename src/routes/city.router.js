@@ -1,5 +1,5 @@
 import { getAll, create, getOne, remove, update } from '../controllers/city.controllers.js';
-import express  from 'express';
+import express from 'express';
 
 const cityRouter = express.Router();
 

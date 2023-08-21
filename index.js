@@ -1,78 +1,51 @@
-#!/usr/bin/env node
-
-/**
- * Module dependencies.
- */
-
 // var app = require('../app');
-import app from '../src/app.js'
+import app from './app.js'
 // var debug = require('debug')('mytineraty:server');
 import logger from 'debug';
-const debug =logger('mytineraty:server');
+const debug = logger('mytineraty:server');
 // var http = require('http');
 import http from 'http'
 // !config mongoose
 import mongoose from 'mongoose';
-import connectDB from '../src/utils/connection.js';
+import connectDB from './src/utils/connection.js';
 
 connectDB();
 
 mongoose.connection.once('open', () => {
-		console.log("Connected to MongoDB");
+  console.log("Connected to MongoDB");
 })
 
 mongoose.connection.on('error', err => {
-		console.error(err);
+  console.error(err);
 })
 
 
-
-/**
- * Get port from environment and store in Express.
- */
-
-// *******!cambiamos las variables declaradas en var por const*******//
-
-const port = normalizePort(process.env.PORT || '8000');
+const port = normalizePort(process.env.PORT || '7000');
 app.set('port', port);
 
-/**
- * Create HTTP server.
- */
 
 const server = http.createServer(app);
 
-/**
- * Listen on provided port, on all network interfaces.
- */
 
-server.listen(port,()=>console.log('server ready en port'));
+server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
-/**
- * Normalize a port into a number, string, or false.
- */
 
 function normalizePort(val) {
   const port = parseInt(val, 10);
 
   if (isNaN(port)) {
-    // named pipe
     return val;
   }
 
   if (port >= 0) {
-    // port number
     return port;
   }
 
   return false;
 }
 
-/**
- * Event listener for HTTP server "error" event.
- */
 
 function onError(error) {
   if (error.syscall !== 'listen') {
@@ -83,7 +56,6 @@ function onError(error) {
     ? 'Pipe ' + port
     : 'Port ' + port;
 
-  // handle specific listen errors with friendly messages
   switch (error.code) {
     case 'EACCES':
       console.error(bind + ' requires elevated privileges');
@@ -98,9 +70,6 @@ function onError(error) {
   }
 }
 
-/**
- * Event listener for HTTP server "listening" event.
- */
 
 function onListening() {
   const addr = server.address();
