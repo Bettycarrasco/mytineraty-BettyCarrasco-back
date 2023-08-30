@@ -7,9 +7,6 @@ const itinerarySchema = Schema({
     cityId: {type: Schema.ObjectId, ref:'cities', required: true},
     price: {type: Number, required: true, min:1, max:5}, 
     duration: {type: Number, required: true},
-    likes: {type: Number, default:0},
-    tematicHashtags: [String],
-    Comments: {type: String }
 },{
     Timestamps: true
 })

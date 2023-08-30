@@ -6,7 +6,8 @@ export const getAllIt = catchError(async (req, res) => {
     return res.json(itinerary);
 });
 export const createIt = catchError(async (req, res) => {
-    const itinerary = await Itinerary.create(req.body);
+    const {name, userName, price, duration, cityId, photoUser} = req.body;
+    const itinerary = await Itinerary.create({name, userName, price, duration, cityId, photoUser});
     return res.status(201).json(itinerary);
 });
 export const getOneIt = catchError(async (req, res) => {
@@ -21,8 +22,9 @@ export const removeIt = catchError(async (req, res) => {
 });
 export const updateIt = catchError(async (req, res) => {
     const { id } = req.params;
-    const itinerary = await Itinerary.findByIdAndUpdate(id, req.body , { new: true })
+    const {name, userName, price, duration, cityId, photoUser} = req.body;
+    const itinerary = await Itinerary.findByIdAndUpdate(id, {name, userName, price, duration, cityId, photoUser} , { new: true })
     return res.json(itinerary);
 });
 
-//export default { getAllIt, createIt, getOneIt, removeIt, updateIt }
+export default { getAllIt, createIt, getOneIt, removeIt, updateIt }
