@@ -6,8 +6,8 @@ export const getAllIt = catchError(async (req, res) => {
     return res.json(itinerary);
 });
 export const createIt = catchError(async (req, res) => {
-    const {name, userName, price, duration, cityId, photoUser} = req.body;
-    const itinerary = await Itinerary.create({name, userName, price, duration, cityId, photoUser});
+    const {cityId, name, itineraryId, userName, photoUser, price, duration, likes, tematicHashtags} = req.body;
+    const itinerary = await Itinerary.create({cityId, name, itineraryId, userName, photoUser, price, duration, likes, tematicHashtags });
     return res.status(201).json(itinerary);
 });
 export const getOneIt = catchError(async (req, res) => {
@@ -22,8 +22,8 @@ export const removeIt = catchError(async (req, res) => {
 });
 export const updateIt = catchError(async (req, res) => {
     const { id } = req.params;
-    const {name, userName, price, duration, cityId, photoUser} = req.body;
-    const itinerary = await Itinerary.findByIdAndUpdate(id, {name, userName, price, duration, cityId, photoUser} , { new: true })
+    const {cityId, name, itineraryId, userName, photoUser, price, duration, likes, tematicHashtags} = req.body;
+    const itinerary = await Itinerary.findByIdAndUpdate(id, {cityId, name, itineraryId, userName, photoUser, price, duration, likes, tematicHashtags} , { new: true })
     return res.json(itinerary);
 });
 

@@ -12,4 +12,11 @@ itineraryRouter.route('/:id')
     .delete(removeIt)
     .put(updateIt);
 
+itineraryRouter.route('/id/:id')
+    //.get(readOneItineraryById)
+
+itineraryRouter.route('/:cityId')
+    //.get(readAllItineratyByCity)
+
+
 export default itineraryRouter;
