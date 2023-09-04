@@ -1,4 +1,4 @@
-import { getAllIt, createIt, getOneIt, removeIt, updateIt } from '../controllers/itineraryControllers.js';
+import { getAllIt, createIt, getOneIt, removeIt, updateIt, readAllItineratyByCity } from '../controllers/itineraryControllers.js';
 import express from 'express';
 
 const itineraryRouter = express.Router();
@@ -12,11 +12,8 @@ itineraryRouter.route('/:id')
     .delete(removeIt)
     .put(updateIt);
 
-itineraryRouter.route('/id/:id')
-    //.get(readOneItineraryById)
-
-itineraryRouter.route('/:cityId')
-    //.get(readAllItineratyByCity)
+itineraryRouter.route('/city/:city')
+    .get(readAllItineratyByCity)
 
 
 export default itineraryRouter;

@@ -6,6 +6,7 @@ export const getAllIt = catchError(async (req, res) => {
     return res.json(activity);
 });
 export const createIt = catchError(async (req, res) => {
+    
     const {itineraryId, likes, tematicHashtags, Comments, description} = req.body;
     const activity = await Activity.create({itineraryId, likes, tematicHashtags, Comments, description});
     return res.status(201).json(activity);
