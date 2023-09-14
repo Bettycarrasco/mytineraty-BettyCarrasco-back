@@ -2,7 +2,8 @@ import mongoose, { Schema } from "mongoose";
 import bcrypt from 'bcrypt'
 
 const userSchema = new Schema({
-    name: { type: String, require: true },
+    firstName: { type: String, require: true },
+    lastName: { type: String, require: true },
     email: { type: String, require: true, unique: true },
     password: { type: String, require: true },
     Photo: { type: String, default: 'https://www.pngmart.com/files/22/User-Avatar-Profile-Transparent-Isolated-PNG.png' },

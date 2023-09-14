@@ -1,5 +1,5 @@
 import express from 'express';
-import {getAll, create, getOne, remove, update, login} from '../controllers/userControllers.js';
+import {getAll, create, getOne, remove, update, login,} from '../controllers/userControllers.js';
 import validatorjwt from '../utils/validatorJwt.js'
 
 const userRouter = express.Router();
@@ -16,6 +16,9 @@ userRouter.route('/:id')
 
 userRouter.route('/login')
     .post(login)
+
+// userRouter.route('/signIn')
+//     .post(signIn)
 
 
 export default userRouter;
